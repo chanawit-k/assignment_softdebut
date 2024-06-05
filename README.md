@@ -5,12 +5,12 @@
   python -m venv .venv
   ```
 
-2. Activate Virtual Environment:
-  windows
+2. Activate Virtual Environment
+ - windows
   ```python
   venv\Scripts\activate
   ```
-  mac
+  - mac
   ```python
   source venv/bin/activate
   ```
