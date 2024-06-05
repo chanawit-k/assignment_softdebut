@@ -1,11 +1,11 @@
-from django.views.generic import ListView
+from django.views.generic import TemplateView
+from core.models import Employee
 
 
-class EmployeeListView(ListView):
-    template_name = "core/sample_html.html"
+class EmployeeListView(TemplateView):
+    template_name = "core/employee_table.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        # Add your context variables here
-        context['test_context'] = 'value from views'
+        context['emp_name'] = Employee.objects.first()
         return context
