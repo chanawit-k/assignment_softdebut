@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<div class="container mt-3">
+    <h1>Create New Employee</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="emp_num" class="form-label">Number</label>
+            <input type="text" name="emp_num" id="emp_num" class="form-control">
+            {% for error in form.emp_num.errors %}
+                <div class="alert alert-danger  mt-2 p-2" role="alert">{{ error }}</div>
+            {% endfor %}
+        </div>
+        <div class="mb-3">
+            <label for="emp_name" class="form-label">Name</label>
+            <input type="text" name="emp_name" id="emp_name" class="form-control">
+            {% for error in form.emp_name.errors %}
+                <div class="alert alert-danger mt-2 p-2" role="alert">{{ error }}</div>
+            {% endfor %}
+        </div>
+        <div class="mb-3">
+            <label for="position" class="form-label fw-bold">Position</label>
+            <select class="form-select w-100" name="position" id="position" class="form-control">
+            <option selected value="select">Select</option>
+            <option value="Managing Director">Managing Director</option>
+            <option value="Manager">Manager</option>
+            <option value="Supervisor">Supervisor</option>
+            <option value="Clerk">Clerk</option>
+            </select>
+            {% for error in form.position.errors %}
+                <div class="alert alert-danger mt-2 p-2" role="alert">{{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <button type="submit" class="btn btn-dark">Save</button>
+    </form>
+</div>
+
+{% endblock body %}
